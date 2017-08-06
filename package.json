@@ -1,0 +1,23 @@
+{
+  "name": "autodeploy",
+  "version": "1.0.0",
+  "description": "Simple application that allows to make a pull request from our repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malekbenz/autodeploy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malekbenz/autodeploy/issues"
+  },
+  "homepage": "https://github.com/malekbenz/autodeploy#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
