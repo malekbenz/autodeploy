@@ -31,7 +31,7 @@ app.get('/deploy/red/', function (req, res) {
 })
 app.get('/deploy', function (req, res) {
 	  
-    res.send('Hello World!')
+    res.sendFile('index.html');
 })
 
 
