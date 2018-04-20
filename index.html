@@ -38,23 +38,16 @@
 </head>
 
 <body>
-    <form action="/deploy/red" method="post" name="myForm">
-        <button id="deployeRed" type="input" class="btn">Deployer Red </button>
-    </form>
+    <button id="deployeRed" type="input" class="btn">Deployer Red </button>
     <script>
         document.getElementById('deployeRed').addEventListener("click", function () {
-
-            // document.getElementById("myForm").submit();
-
             sendData();
         })
-
 
         function sendData(data) {
             var XHR = new XMLHttpRequest();
             var urlEncodedData = "";
 
-            // Define what happens on successful data submission
             XHR.addEventListener('load', function (event) {
                 var response = JSON.parse(event.currentTarget.response)
                 console.log(response);
@@ -69,9 +62,6 @@
 
             // Set up our request
             XHR.open('POST', '/deploy/red');
-
-            // Add the required HTTP header for form data POST requests
-            // XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             // Finally, send our data.
             XHR.send(urlEncodedData);
