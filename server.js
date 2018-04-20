@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 const PORT = process.env.PORT || 8000;
 
 
-app.get('/deploy/red/', function (req, res) {
+app.post('/deploy/red/', function (req, res) {
 	
 	var response = { success : false, message: '' };
 	exec('deploy.bat', function (error, stdout, stderr) {
@@ -31,7 +31,7 @@ app.get('/deploy/red/', function (req, res) {
 })
 app.get('/deploy', function (req, res) {
 	  
-    res.sendFile('index.html');
+    res.sendFile(__dirname + '/index.html');
 })
 
 
