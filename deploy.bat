@@ -1,8 +1,10 @@
 @echo off
-echo Run with success
+REM echo Run with success
 
-CD /D G:\ReDD
+CD /D \ReD
 git pull
+
+echo Run with success
 REM # scripts/deploy
 REM git checkout production
 REM git pull
