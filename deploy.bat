@@ -1,7 +1,7 @@
 @echo off
 REM echo Run with success
 
-CD /D \ReD
+CD /D ..\ReD
 git pull
 
 echo Run with success
