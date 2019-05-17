@@ -4,7 +4,8 @@
   "description": "Simple application that allows to make a pull request from our repository",
   "main": "index.js",
   "scripts": {
-    "serve": "forever start server.js"
+    "serve": "forever start server.js",
+	"start":"node server.js"
   },
   "repository": {
     "type": "git",
