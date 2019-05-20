@@ -1,7 +1,8 @@
 @echo off
 REM echo Run with success
-
+echo Current direcorty : %cd%
 CD /D ..\ReD
+echo Move to direcorty : %cd%
 git pull
 
 echo Run with success
