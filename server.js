@@ -9,14 +9,13 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 
 const PORT = process.env.PORT || 4000;
 
-
 app.use(express.static('public'));
 
 app.use('/', function (req, res, next) {
      req.body.event = req.headers['x-github-event'];
 
      if(req.body.ref){
- 		req.body.branch = req.body.ref.split('/')[2];
+ 		req.body.branch = req.body.ref.split('/')[2]; //extract the branch name
  	}
      next();
  });
@@ -27,20 +26,9 @@ app.use('/', function (req, res, next) {
     if (req.body.event != 'push') {
         res.statuscode = 200
         res.end('not a push event ' + req.url);
-
         return;
     }
 
-    // exec('deploy.bat', function (error, stdout, stderr) {
-        // console.log('build has is triggered on ', req.body.branch);
-        // console.log(stdout);
-        // if (error != null) {
-            // console.log('error during the execution of redeploy: ' + stderr);
-            // res.statuscode = 200
-            // res.end('error during the execution of redeploy');
-            // return;
-        // }
-    // });
     next();
 });
 
@@ -49,15 +37,14 @@ app.post('/', function (req, res) {
 	
 	var response = { success : false, message: '' };
     if (req.body.branch != 'develop' && req.body.branch != 'master') {
-
         console.log('a %s event on %s branch', req.body.event , req.body.branch);
         res.statuscode = 200;
-        res.end('not a master branch');
+        res.end('not a master OR develop branch ');
         return;
     }
 
 	exec('deploy.bat', function (error, stdout, stderr) {
-			console.log('build has is triggered on Develop ');
+			console.log( `build has triggered on Develop ${req.body.branch}`);
 			console.log(stdout);
 			if (error != null) {
 				console.log('Error during the execution of redeploy: ' + stderr);
@@ -69,18 +56,11 @@ app.post('/', function (req, res) {
 			response.message = 'Good job , ' + stdout;
 			res.send(response);
 		});
-   
-	
 });
 
 app.get('/deploy', function (req, res) {
-	  
     res.sendFile(__dirname + '/index.html');
 });
-
-
-
- 
 
 app.listen(PORT, function () {
     console.log('Server listening on port ', PORT )
